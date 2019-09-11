@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<about>
+  <template name="杭州意达企业管理咨询有限公司"
+    author="HeiHei"
+    createdate = "2018-04-20"
+    version="1.0"
+    fordntver="V1.0 正式版" />
+  <menu>
+  </menu>
+</about>

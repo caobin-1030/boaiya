@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{config.webtitle}</title>
+    <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+    <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/base.js"></script>
+<script type="text/javascript" src="{config.webpath}css/style.css"></script>
+</head>
+<body>
+  <%template src="_header.html"%>
+  <div style="height:112px" class=" h_80"></div>
+   <!-- 导航图片 -->
+   <%set DataTable articalDtzJzGz=get_article_list("photo",64,1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+  <img src="{drzJzGz[img_url]}" class="w-100 tonone">
+     <%/foreach%>
+
+  <!--  手机站导航图片 -->
+ <%set DataTable marticalDtzJzGz=get_article_list("photo",73,1, "status=0")%>
+<%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+    <img src="{drzJzGz[img_url]}" class="w-100 sjz_banner">
+ <%/foreach%>
+
+    <!-- 合作伙伴 -->
+    <div class="container-fluid bg-h" style="padding: 0 20px">
+        <!--  -->
+        <div class="ppshow_det_box">
+            <h2 class="my-0">{model.title}</h2>
+            <p class="ppshow_det_hx"></p>
+            <!--<div class="ppshow_det_sj">
+                <p>逛街的时候</p>
+                <p>总觉得商场的衣服容易撞衫</p>
+                <p>买包的时候</p>
+                <p>稍好看的款式就有点烂大街</p>
+                <p>装修的时候</p>
+                <p>看到的家具总有些不合心意</p>
+                <p>特别的你</p>
+                <p>总是找不到特别的东西来装饰</p>
+                <p>……</p>
+            </div>-->
+            <p class="ppshow_det_text">{model.content}</p>
+            <!--<img src="images/图层 10.png" class="ppshow_det_img">-->
+        </div>
+        <div class="detail_prev_next">
+            <a class="float-right" href="<%linkurl("goods_list",0)%>">返回列表</a>
+            <p class="">上一篇：<%write get_prevandnext_article("goods_show",1,"没有了",0)%></p>
+            <p class=" mb-0">下一篇： <%write get_prevandnext_article("goods_show",-1,"没有了",0)%></p>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <!-- 分公司地址信息 -->
+    <div id="foot1"><%template src="_footer1.html"%></div>
+    <!-- 底部导航 -->
+    <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+
+<script>
+    $('#foot1').load('_footer1.html');
+    $('#foot2').load('_footer2.html');
+</script>
+</html>

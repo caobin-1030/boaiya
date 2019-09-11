@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<%set string category_title=get_category_title(model.category_id,"软装中心")%>
+    <title>{config.webtitle}</title>
+    <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+    <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+</head>
+<body>
+   <%template src="_header.html"%>
+    <!-- 导航图片 -->
+  <div style="height:112px" class=" h_80"></div>
+  <%set DataTable articalDtzJzGz=get_article_list("photo",63,1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+  <img src="{drzJzGz[img_url]}" class="w-100 tonone">
+     <%/foreach%>
+
+  <!--  手机站导航图片 -->
+    <%set DataTable marticalDtzJzGz=get_article_list("photo",72,1, "status=0")%>
+<%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+    <img src="{drzJzGz[img_url]}" class="w-100 sjz_banner" >
+     <%/foreach%>
+
+
+    <!-- <div class="about w-100 about_a ">
+         <%set DataTable gshjdtwEw=get_category_child_list("case", 0)%>
+        <%foreach(DataRow drwEwTR in gshjdtwEw.Rows)%>
+    <a href="<%linkurl("case_list",{drwEwTR[id]})%>" class="about_nav_item">{drwEwTR[title]}</a>
+      <%/foreach%>
+        
+    </div>-->
+
+    <!-- 软装案例 -->
+    <div class="container-fluid bg-w" style="padding: 0 20px">
+        <!--  -->
+        <div class="rzal_det_box">
+            <!-- <img src="{model.img_url}" class="rzal_det_img"> -->
+            <h2 class="my-0">{model.title}</h2>
+            <p class="rzal_det_hx"></p>
+            <!-- p class="rzal_det_sec"> <span>{model.fields[author]}</span></p -->
+            <p class="rzal_det_text">{model.content}</p>
+          <!--<p class="rzal_det_img_info">客厅</p>-->
+        </div>
+        <div class="detail_prev_next">
+           <a class="float-right" href="<%linkurl("case_list",model.category_id)%>">返回列表</a>
+            <p class="">上一篇：<%write get_prevandnext_article("case_show",1,"没有了",0)%></p>
+            <p class=" mb-0">下一篇： <%write get_prevandnext_article("case_show",-1,"没有了",0)%></p>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div id="foot1"><%template src="_footer1.html"%></div>
+    <!-- 底部导航 -->
+    <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+
+<script>
+    $('#foot1').load('_footer1.html');
+    $('#foot2').load('_footer2.html');
+</script>
+<script type="text/javascript">
+        var ma = location.href;
+         ma = ma.split("/");
+         oa = ma[ma.length-1];
+         oa2 = ma[ma.length-2];
+         oa3 ="/"+ oa2+"/"+oa
+         $(".about_a a").each(function(){
+          if($(this).attr("href")==oa3){
+           $(this).addClass("about_sel");
+          }
+         });
+</script>
+</html>

@@ -1,0 +1,93 @@
+  <!-- 背景色及区域 -->
+  <div class="container-fluid bg-3">
+    <!-- 整体内容区域 -->
+    <div class="companys row">
+      <!-- 分公司名称标签 -->
+      <ul id="myTab" class="nav nav-tabs col-md-4 col-xs-12">
+         <li class="w-100 active">
+          <!-- a标签跳转的对应的是公司的名称 -->
+          <a href="#Headquarters" data-toggle="tab" class="w-100 p-0"><%write get_article_field("contact","yingwenbiaoti") %></a>
+        </li>
+        <li class="w-100">
+          <a href="#Furniture" data-toggle="tab" class="w-100 p-0"> <%write get_article_field("contact1","yingwenbiaoti") %></a>
+        </li>
+        <li class="w-100">
+          <a href="#Exhibition" data-toggle="tab" class="w-100 p-0"><%write get_article_field("contact2","yingwenbiaoti") %></a>
+        </li>
+        <li class="w-100">
+          <a href="#Lighting" data-toggle="tab" class="w-100 p-0"> <%write get_article_field("contact3","yingwenbiaoti") %></a>
+        </li>
+      </ul>
+      <div class="tab-content col-md-4 col-xs-12">
+        <!-- 单个分公司内容区域 -->
+        <!-- 此id为a标签跳转id -->
+          <!-- 第一家 -->
+        <div class="tab-pane fade in active" id="Headquarters">
+          <p class="tab_title"> <%write get_article_content("contact","title") %></p>
+          <!-- 详细信息 -->
+          <div class="tab_info w-100">
+              <p>  <%write get_article_content("contact","content") %></p>
+            <!--<p class="tab_info_add">ADD: <span class="add1">0571-28207870</span></p>
+            <p class="tab_info_tel">TEL: <span class="tel1">杭州市西湖大道18号新东方大厦1301</span></p>
+            <p class="tab_info_mail">E-Mail: <span class="email1">boella-case@vip.163.com</span></p>-->
+          </div>
+        </div>
+          <!-- 第二家 -->
+        <div class="tab-pane fade in" id="Furniture">
+          <p class="tab_title"> <%write get_article_content("contact1","title") %></p>
+          <!-- 详细信息 -->
+          <div class="tab_info w-100">
+              <p>  <%write get_article_content("contact1","content") %></p>
+            <!--<p class="tab_info_add">ADD: <span class="add1">0571-28207870</span></p>
+            <p class="tab_info_tel">TEL: <span class="tel1">杭州市西湖大道18号新东方大厦1301</span></p>
+            <p class="tab_info_mail">E-Mail: <span class="email1">boella-case@vip.163.com</span></p>-->
+          </div>
+        </div>
+          <!-- 第三家 -->
+        <div class="tab-pane fade in" id="Exhibition">
+          <p class="tab_title"><%write get_article_content("contact2","title") %></p>
+          <!-- 详细信息 -->
+          <div class="tab_info w-100">
+              <p>  <%write get_article_content("contact2","content") %></p>
+            <!--<p class="tab_info_add">ADD: <span class="add1">0571-28207870</span></p>
+            <p class="tab_info_tel">TEL: <span class="tel1">杭州市西湖大道18号新东方大厦1301</span></p>
+            <p class="tab_info_mail">E-Mail: <span class="email1">boella-case@vip.163.com</span></p>-->
+          </div>
+        </div>
+          <!-- 第四家 -->
+        <div class="tab-pane fade in" id="Lighting">
+          <p class="tab_title"> <%write get_article_content("contact3","title") %></p>
+          <!-- 详细信息 -->
+          <div class="tab_info w-100">
+              <p>  <%write get_article_content("contact3","content") %></p>
+            <!--<p class="tab_info_add">ADD: <span class="add1">0571-28207870</span></p>
+            <p class="tab_info_tel">TEL: <span class="tel1">杭州市西湖大道18号新东方大厦1301</span></p>
+            <p class="tab_info_mail">E-Mail: <span class="email1">boella-case@vip.163.com</span></p>-->
+          </div>
+        </div>
+      </div>
+      <!-- 微信 -->
+      <div class="wexin col-md-4 col-xs-12 ">
+        <p class="tab_title">WeChat</p>
+        <div class="tab_info w-100">
+          <!-- 二维码 -->
+            <img class="wechat" src ="<%=get_article_img_url(257)%>" />
+         
+          <p class="wechat_text">微信扫一扫关注公众号</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container-fluid bg-2" style="position: relative;z-index: 100;padding-bottom: 0">
+  <div class="foot_nav">
+        <ul class="breadcrumb p-0">
+            <li><a href="<%linkurl("index")%>">首页</a></li>
+            <li><a href="<%linkurl("gshj_list",56)%>">关于铂艾雅</a></li>
+            <li><a href="<%linkurl("rczp_list",47)%>">合作品牌</a></li>
+            <li><a href="<%linkurl("case_list",35)%>">软装中心</a></li>
+            <li><a href="<%linkurl("goods_list",0)%>">品牌SHOW</a></li>
+            <li><a href="<%linkurl("news_list",0)%>">新闻中心</a></li>
+            <li><a href="<%linkurl("contact","contact")%>">联系我们</a></li>
+        </ul>
+    </div>
+</div>

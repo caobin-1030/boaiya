@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{config.webtitle}</title>
+ 
+    <!-- Mobile Metas -->
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="<%templateskin%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<%templateskin%>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="<%templateskin%>/css/et-line.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME PLUGINS STYLE -->
+    <link href="<%templateskin%>/css/jquery.mcustomscrollbar.css" rel="stylesheet" type="text/css" />
+    <link href="<%templateskin%>/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="<%templateskin%>/css/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <link href="<%templateskin%>/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME PLUGINS STYLE -->
+    <!-- THEME STYLES -->
+    <link href="<%templateskin%>/css/global.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <!-- THEME -->
+    <link href="<%templateskin%>/css/dark.css" rel="stylesheet" type="text/css" />
+    <link href="<%templateskin%>/css/base.css" rel="stylesheet" type="text/css" id="style-color" />
+    <!-- END THEME -->
+    <!-- BEGIN JQUERY -->
+    <script type="text/javascript" src="<%templateskin%>/js/jquery.min.js"></script>
+    <!-- END JQUERY -->
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="<%templateskin%>/favicon.ico" />
+    <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+    <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+    <!-- END FAVICON -->
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+</head>
+<body> 
+    <%template src="_header.html"%>
+ 
+  <div style="height: 112px" class=" h_80"></div> 
+  <!-- 整体内容区域 -->
+  <div class="liuyan_box w-100">
+    <!-- 背景图片 -->
+<%set DataTable articalDtzJzGz=get_article_list("photo",67, 1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+    <img  class="liuyan_img" src="{drzJzGz[img_url]}">
+<%/foreach%>  
+    <!-- 留言盒子 -->
+  
+       <%template src="../sys/留言2/index.html"%>
+  </div>
+<!-- 底部 -->
+    <!-- 底部导航 -->
+    <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+
+<script>
+  if( $(window).width() <= 576){
+    $('.liuyan_info_box').width($(window).width()-62)
+  $('#foot2').css('marginTop',$('.liuyan_info_box').height() -547 )
+  }
+  $('.liuyan_checkbox').click(function(){
+    var n = $('.liuyan_checkbox').index(this)
+   console.log($('.liuyan_checkbox:eq('+n+') label').html())
+    alert($('.liuyan_text').value())
+  })
+</script>
+</html>

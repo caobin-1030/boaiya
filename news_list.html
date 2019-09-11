@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{config.webtitle}</title>
+    <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+    <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/base.js"></script>
+<script type="text/javascript" src="{config.webpath}css/style.css"></script>
+
+</head>
+<body>
+    <%template src="_header.html"%>
+
+  <!-- 导航  --> 
+  <div style="height:112px" class=" h_80"></div>
+ <%set DataTable articalDtzJzGz=get_article_list("photo",65,1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+  <img src="{drzJzGz[img_url]}" class="w-100 tonone">
+     <%/foreach%>
+
+  <!--  手机站导航图片 -->
+<%set DataTable marticalDtzJzGz=get_article_list("photo",74,1, "status=0")%>
+<%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+    <img src="{drzJzGz[img_url]}" class="w-100 sjz_banner">
+  <%/foreach%>
+    <!-- 新闻列表 -->
+    <div class="container-fluid bg-w">
+        <!--  -->
+        <div class="flo5">
+            <!-- 标题 -->
+            <div class="flo5_title">
+                <p class="flo5_title_fri">新闻中心</p>
+                <p class="flo5_title_xx">/</p>
+                <p class="flo5_title_sec m-0">NEWS CENTER</p>
+            </div>
+            <!-- 内容区域 -->
+            <div class="new_box">
+                <!-- 轮播 -->
+                <div id="myCarousel" class="carousel slide tonone" data-interval="2000" data-ride="">
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+              <%set DataTable getnews_top=get_article_list("news",0,1,"status=0 and is_top=1")%>
+             <%foreach(DataRow drcEGZr in getnews_top.Rows)%>  
+       
+                <div class="item active new_item">
+                    <img src="{drcEGZr[img_url]}" class="new_item_carousel_img">
+<a href="<%linkurl("news_show",{drcEGZr[id]})%>">  
+                    <div class="new_">
+                        <p class="new_title"><%cutstring({drcEGZr[title]},100)%></p>
+                        <p class="new_time">发布时间：<span><%datetostr({drcEGZr[add_time]},yyyy-mm-dd)%></span></p>
+                        <p class="new_text">{drcEGZr[zhaiyao]}</p>
+                        <p class="new_readmore">READ MORE
+                            <img src="<%templateskin%>/images/icon 拷贝.png" alt=""></p>
+                    </div>
+<a/>
+                </div>
+
+                        <%/foreach%>
+           <%set DataTable getnews_red=get_article_list("news",0,2,"status=0 and is_red=1")%>
+             <%foreach(DataRow drcEGZr in getnews_red.Rows)%>   
+    
+            <div class="item  new_item">
+                <img src="{drcEGZr[img_url]}" class="new_item_carousel_img">
+ <a href="<%linkurl("news_show",{drcEGZr[id]})%>">  
+                <div class="new_">
+                    <p class="new_title"><%cutstring({drcEGZr[title]},100)%></p>
+                    <p class="new_time">发布时间：<span><%datetostr({drcEGZr[add_time]},yyyy-mm-dd)%></span></p>
+                    <p class="new_text">{drcEGZr[zhaiyao]}</p>
+                    <p class="new_readmore">READ MORE
+                        <img src="<%templateskin%>/images/icon 拷贝.png" alt=""></p>
+                </div>
+</a>
+            </div>
+
+                        <%/foreach%>
+                    </div>
+                </div>
+            </div>
+            <%set DataTable articalDtmYPSc=get_article_list("news", category_id, page, "status=0", out totalcount, out pagelist, "news_list", category_id, "__id__")%>
+       <%foreach(DataRow drmYPSc in articalDtmYPSc.Rows)%>
+     <!-- 新闻列表 -->
+
+                <a href="<%linkurl("news_show",{drmYPSc[id]})%>" class="">
+            <div class="new_info_box row mx-0"> 
+                  <div class="new_info_img_box col-xs-12 col-sm-4 pl-0">
+                    <img src="{drmYPSc[img_url]}" class="new_info_box_img w-100">
+                   </div>
+
+                    <div class="new_info_info col-xs-12 col-sm-8 px-0">
+                        <p class="new_info_title w-100">{drmYPSc[title]}</p>
+                        <p class="new_info_time w-100">发布时间：<span><%datetostr({drmYPSc[add_time]},yyyy-mm-dd)%></span></p>
+                        <p class="new_info_text w-100"><%cutstring({drmYPSc[zhaiyao]},500)%></p>
+                        <p class="new_info_-"></p>
+                    </div>
+             
+
+            </div>
+               </a>   
+            <%/foreach%>
+        
+
+
+      <!-- 分页查询 -->
+            <!-- <div class="fycx">
+        <p>首页</p>
+        <p>上一页</p>
+        <p>1</p>
+        <p>2</p>
+        <span>……</span>
+        <p>10</p>
+        <p>下一页</p>
+        <p>末页</p>
+      </div>-->
+     
+
+         
+
+
+        </div> 
+    <!-- 分页-->
+            <div class="digg">
+               <%template src="../sys/分页按钮/index.html"%>
+            </div>
+    </div>
+    <!-- 底部 -->
+    <!-- 分公司地址信息 -->
+    <div id="foot1"><%template src="_footer1.html"%></div>
+    <!-- 底部导航 -->
+    <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+<script>
+  $(document).ready(function(){
+      $('#foot1').load('_footer1.html');
+      $('#foot2').load('_footer2.html');
+  });
+</script>
+</html>

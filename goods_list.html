@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{config.webtitle}</title>
+    <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+    <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/base.js"></script>
+<script type="text/javascript" src="{config.webpath}css/style.css"></script>
+</head>
+<body>
+
+    <%template src="_header.html"%>
+
+    <!-- 导航图片 -->
+  <div style="height:112px" class=" h_80"></div>
+   <%set DataTable articalDtzJzGz=get_article_list("photo",64,1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+  <img src="{drzJzGz[img_url]}" class="w-100 tonone">
+     <%/foreach%>
+
+  <!--  手机站导航图片 -->
+ <%set DataTable marticalDtzJzGz=get_article_list("photo",73,1, "status=0")%>
+<%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+    <img src="{drzJzGz[img_url]}" class="w-100 sjz_banner">
+  <%/foreach%>
+
+    <!-- 品牌SHOW -->
+    <div class="container-fluid bg-h">
+        <!--  -->
+        <div class="flo5">
+            <!-- 标题 -->
+            <div class="flo5_title">
+                <p class="flo5_title_fri">品牌SHOW</p>
+                <p class="flo5_title_xx">/</p>
+                <p class="flo5_title_sec m-0">BRAND SHOW</p>
+            </div>
+            <!-- 内容区域 -->
+            <div class="ppshow_box row mx-0">
+
+                <%set DataTable goods_list = get_article_list("goods", category_id, page, "status=0", out totalcount, out pagelist, "goods_list", category_id, "__id__")%>
+                <%foreach(DataRow dr in goods_list.Rows)%>
+                <!-- 单个内容区域 -->
+                <div class="ppshow_item_box col-md-4 col-xs-6">
+
+                    <div class="row mx-0">
+                        <div class="col-12 w-100 px-0">
+                            <img src="{dr[img_url]}" class="w-100 ppshow_item_img ">
+                        </div>
+                        <div class="ppshow_info w-100 col-12">
+                            <p class="flo4_info_fri"> <a href="<%linkurl("goods_show",{dr[id]})%>"> {dr[title]}</a></p>
+                            <p class="flo4_info_hx"></p>
+                            <p class="flo4_info_text mb-0">{dr[zhaiyao]}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <%/foreach%>
+
+            </div>
+        </div>
+            
+            <!-- 分页查询 -->
+
+            <div class="digg">
+               <%template src="../sys/分页按钮/index.html"%>
+            </div>
+    </div>
+    <!-- 底部 -->
+    <!-- 分公司地址信息 -->
+    <div id="foot1"><%template src="_footer1.html"%></div>
+    <!-- 底部导航 -->
+    <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+
+<script type="text/javascript">
+    $('#foot1').load('_footer1.html');
+    $('#foot2').load('_footer2.html');
+</script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{config.webtitle}</title>
+  <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+  <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+</head>
+<body>
+
+  <%template src="_header.html"%>
+  <!-- 导航图片 -->
+  <div style="height:112px" class=" h_80"></div>
+  <%set DataTable articalDtzJzGz=get_article_list("photo",63,1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+  <img src="" data-src="{drzJzGz[img_url]}" class="w-100 tonone">
+ 
+     <%/foreach%>
+
+ <!--  手机站导航图片 -->
+  <%set DataTable marticalDtzJzGz=get_article_list("photo",72,1, "status=0")%>
+<%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+    <img src="" data-src="{drzJzGz[img_url]}" class="w-100 sjz_banner" >
+     <%/foreach%>
+  <div class="about w-100 about_a">
+       <%set DataTable gshjdtwEw=get_category_child_list("case", 0)%>
+        <%foreach(DataRow drwEwTR in gshjdtwEw.Rows)%>
+    <a href="<%linkurl("case_list",{drwEwTR[id]})%>" class="about_nav_item ">{drwEwTR[title]}</a>
+      <%/foreach%>
+  </div>
+  <!-- 合作伙伴 -->
+  <div class="container-fluid bg-w">
+    <!-- 内容区域 -->
+    <div class="razl_box row">
+<%set DataTable rczp_list = get_article_list("case", category_id, page, "status=0", out totalcount, out pagelist, "case_list", category_id, "__id__")%>
+          <%foreach(DataRow dr in rczp_list.Rows)%>
+
+      <!-- 单个内容区域 -->
+      <div class="rzal_item_box col-md-4 col-xs-6">
+
+        <a href="<%linkurl("case_show",{dr[id]})%>">
+        <div class="row mx-0">
+          <div class="col-12 px-0">
+            <div class="rzal_item_zhezhao"><p>了解详情</p></div>
+            <img data-src="{dr[img_url]}" src="" class="w-100 rzal_item_img ">
+          </div>
+          <div class="rzal_info col-12 px-0">
+            <p class="rzal_info_fri">{dr[title]}</p>
+            <p class="rzal_info_sec"><span>{dr[sub_title]}</span></p>
+          </div>
+        </div>
+
+    </a>
+
+      </div> 
+          <%/foreach%>
+
+  </div>
+    <!-- 分页查询 -->
+
+ 
+            <div class="digg">
+               <%template src="../sys/分页按钮/index.html"%>
+            </div>
+
+
+<!-- 底部 -->
+  <!-- 分公司地址信息 -->
+      <div id="foot1"><%template src="_footer1.html"%></div>
+      <!-- 底部导航 -->
+      <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+
+<script>
+    $('#foot1').load('_footer1.html');
+    $('#foot2').load('_footer2.html');
+</script>
+<script type="text/javascript">
+        var ma = location.href;
+         ma = ma.split("/");
+         oa = ma[ma.length-1];
+         oa2 = ma[ma.length-2];
+         oa3 ="/"+ oa2+"/"+oa;
+         oa4 = ma[ma.length-3];
+         oa5 = "/"+oa4+"/"+oa2+'.html'
+         $(".about_a a").each(function(){
+          if($(this).attr("href")==oa3){
+           $(this).addClass("about_sel");
+          }else if($(this).attr("href")==oa5){
+             $(this).addClass("about_sel");
+          }
+         });
+</script>
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/base.js"></script>
+<script type="text/javascript" src="{config.webpath}css/style.css"></script>
+</html>

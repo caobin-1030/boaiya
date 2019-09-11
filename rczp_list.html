@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{config.webtitle}</title>
+  <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+  <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/base.js"></script>
+<script type="text/javascript" src="{config.webpath}css/style.css"></script>
+</head>
+<body>
+    
+<%template src="_header.html"%>
+  <!-- 导航图片 -->
+  <div style="height:112px" class=" h_80"></div>
+  <%set DataTable articalDtzJzGz=get_article_list("photo",62,1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+  <img src="{drzJzGz[img_url]}" class="w-100 tonone">
+      <%/foreach%>
+
+  <!--  手机站导航图片 -->
+<%set DataTable marticalDtzJzGz=get_article_list("photo",71,1, "status=0")%>
+<%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+    <img src="{drzJzGz[img_url]}" class="w-100 sjz_banner">
+ <%/foreach%>
+
+  <div class="about w-100 about_a">
+      <%set DataTable catedrczp=get_category_child_list("rczp", 0)%>
+      <%foreach(DataRow drwEwTR in catedrczp.Rows)%>
+    <a  class="about_nav_item" href="<%linkurl("rczp_list",{drwEwTR[id]})%>">{drwEwTR[title]}</a>
+      <%/foreach%>
+   
+
+  </div>
+  <!-- 合作品牌 -->
+  <div class="container-fluid bg-w">
+    <!--  -->
+    <div class="flo5">
+      <!-- 合作品牌 -->
+      <div class="row mx-0">
+          <%set DataTable rczp_list = get_article_list("rczp", category_id, page, "status=0", out totalcount, out pagelist, "rczp_list", category_id, "__id__")%>
+          <%foreach(DataRow dr in rczp_list.Rows)%>
+
+          <!-- 单个区域 -->
+        <div class="flo1_info_box hzpp col-md-4 col-xs-6">
+           
+          <a href="<%linkurl("rczp_show",{dr[id]})%>">
+                <img src="{dr[img_url]}" class="flo1_info_img">
+
+            
+            <div class="flo1_info_icon">
+              <img src="{dr[pinpailogo]}" class="">
+            </div>
+            <div class="flo1_info_icon1">
+              <img src="{dr[spinpailogo]}" class="">
+         
+              <p class="flo1_info_title">{dr[title]}</p>
+ <p class="flo1_info_text">{dr[zhaiyao]}</p>
+
+    
+
+     
+              <p class="flo1_info_more">READ MORE</p>
+            </div>
+          </a>
+        </div>
+          <%/foreach%>
+        
+
+
+      </div>
+
+          <!-- 分页-->
+            <div class="digg">
+               <%template src="../sys/分页按钮/index.html"%>
+            </div>
+
+    </div>
+  </div>
+<!-- 底部 -->
+  <!-- 分公司地址信息 -->
+    <div id="foot1"><%template src="_footer1.html"%></div>
+    <!-- 底部导航 -->
+    <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+
+<script>
+    $('#foot1').load('_footer1.html');
+    $('#foot2').load('_footer2.html');
+</script>
+<script type="text/javascript">
+        var ma = location.href;
+         ma = ma.split("/");
+         oa = ma[ma.length-1];
+         oa2 = ma[ma.length-2];
+         oa3 ="/"+ oa2+"/"+oa;
+         oa4 = ma[ma.length-3];
+         oa5 = "/"+oa4+"/"+oa2+'.html' 
+         $(".about_a a").each(function(){
+          if($(this).attr("href")==oa3){
+           $(this).addClass("about_sel");
+          }else if($(this).attr("href")==oa5){
+             $(this).addClass("about_sel");
+          }
+         });
+</script>
+</html>

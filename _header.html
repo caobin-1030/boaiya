@@ -1,0 +1,171 @@
+<!-- 顶部导航栏区域 -->
+  <div class="container-fluid bg-15 mynavbar" name="container">
+    <div class="mynavbar1 row">
+      <!-- 导航 -->
+      <div class="col-xs-4 col-sm-5 text-left text-white small clickNav">
+        <img src="<%templateskin%>/images/nav.png" class="nav_img">
+        <span class="nav_title">导航</span>
+      </div>
+      <!-- logo -->
+      <div class="col-sm-2 col-xs-4 text-left logo_img_box">
+        <a href="<%linkurl("index")%>">
+          <img src="<%templateskin%>/images/logo.png" class="logo_img">
+        </a>
+      </div>
+      <!-- 搜索 -->
+      <div class="col-sm-5 search tonone"> 
+       <!-- <input type="text" placeholder="搜索..." class="search_inp" >-->
+           <%template src="../sys/搜索_样式1/index.html"%>
+        <img src="<%templateskin%>/images/search.png" class="search_img ">
+      </div>
+    </div>
+  </div>
+  <!-- 遮罩层 -->
+  <div class="zhezhao text-white">
+    <!-- 导航栏 -->
+    <div class="showNav">
+      <!-- 标题 -->
+      <div class="show_tou">
+        <img src="<%templateskin%>/images/jiantouzuo.png" class="jiantouzuo_img">
+        <span class="showNav_text">导航</span>
+      </div>
+      <!-- 折叠导航 -->
+      <div class="panel-group" id="accordion">
+        <!-- 首页 -->
+        <div class="panel panel-default">
+          <div class="panel-heading p-0">
+            <a  data-parent="#accordion" href="<%linkurl("index")%>">
+              首页           
+              <img src="<%templateskin%>/images/jiantouyou.png" id="collapseOne_img" class="float-right panel_jiantouyou">
+            </a>
+          </div>
+          <!-- 二级折叠栏内容 -->
+            <!-- <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body p-0"></div>
+            </div> -->
+        </div>
+        <!-- 关于铂艾雅 -->
+        <div class="panel panel-default">
+          <div class="panel-heading p-0">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+              关于铂艾雅
+             <img src="<%templateskin%>/images/jiantouyou.png" id="collapseTwo_img" class="float-right panel_jiantouyou">
+            </a>
+          </div>
+          <!-- 二级折叠栏内容 -->
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body p-0">
+        <%set DataTable catedtwEw=get_category_child_list("gshj",0)%>
+        <%foreach(DataRow drwEwTR in catedtwEw.Rows)%>
+                <p class="secTitle m-0">
+                <a href="<%linkurl("gshj_list",{drwEwTR[id]})%>">{drwEwTR[title]}</a>
+              </p>
+         <%/foreach%>
+<p class="secTitle m-0">             
+<a   href="<%linkurl("about","contact")%>">BOELLA团队</a>  
+              </p>             
+            </div>
+          </div>
+        </div>
+        <!-- 合作品牌 -->
+        <div class="panel panel-default">
+          <div class="panel-heading p-0">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+              合作品牌
+              <img src="<%templateskin%>/images/jiantouyou.png" id="collapseThree_img" class="float-right panel_jiantouyou">
+            </a>
+          </div>
+          <!-- 二级折叠栏内容 -->
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body p-0">
+       <%set DataTable catedtwEwTR=get_category_child_list("rczp", 0)%>
+        <%foreach(DataRow drwEwTR in catedtwEwTR.Rows)%>
+              <p class="secTitle m-0">
+                <a href="<%linkurl("rczp_list",{drwEwTR[id]})%>">{drwEwTR[title]}</a>
+              </p>
+                <%/foreach%>            
+            </div>
+          </div>
+        </div>
+        <!-- 软装中心 -->
+        <div class="panel panel-default">
+          <div class="panel-heading p-0">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                
+              软装中心
+             <img src="<%templateskin%>/images/jiantouyou.png" id="collapseFour_img" class="float-right panel_jiantouyou">
+            </a>
+               
+          </div>
+          <!-- 二级折叠栏内容 -->
+          <div id="collapseFour" class="panel-collapse collapse">
+            <div class="panel-body p-0">
+        <%set DataTable catedcase=get_category_child_list("case", 0)%>
+        <%foreach(DataRow drwEwTR in catedcase.Rows)%>
+                <p class="secTitle m-0">
+                  <a href="<%linkurl("case_list",{drwEwTR[id]})%>">{drwEwTR[title]}</a>
+                </p>
+                
+                  <%/foreach%>
+            </div>
+          </div>
+        </div>
+        <!-- 品牌SHOW -->
+        <div class="panel panel-default">
+          <div class="panel-heading p-0">
+            <a data-parent="#accordion" href="<%linkurl("goods_list",0)%>">
+              品牌SHOW
+              <img src="<%templateskin%>/images/jiantouyou.png" id="collapseFive_img" class="float-right panel_jiantouyou">
+            </a>
+          </div>
+          <!-- 二级折叠栏内容 -->
+          <!-- <div id="collapseFive" class="panel-collapse collapse">
+            <div class="panel-body p-0"></div>
+          </div> -->
+        </div>
+        <!-- 新闻中心 -->
+        <div class="panel panel-default">
+          <div class="panel-heading p-0">
+            <a data-parent="#accordion" href="<%linkurl("news_list",0)%>">
+              新闻中心
+              <img src="<%templateskin%>/images/jiantouyou.png" id="collapseSix_img" class="float-right panel_jiantouyou">
+            </a>
+          </div>
+          <!-- 二级折叠栏内容 -->
+          <!-- <div id="collapseSix" class="panel-collapse collapse">
+            <div class="panel-body p-0"></div>
+          </div> -->
+        </div>
+        <!-- 联系我们 -->
+        <div class="panel panel-default">
+          <div class="panel-heading p-0">
+            <a data-parent="#accordion" href="<%linkurl("contact","contact")%>">
+              联系我们
+              <img src="<%templateskin%>/images/jiantouyou.png" id="collapseSeven_img" class="float-right panel_jiantouyou">
+            </a>          
+          </div>
+          <!-- 二级折叠栏内容 -->
+          <!-- <div id="collapseSeven" class="panel-collapse collapse">
+            <div class="panel-body p-0"></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- 剩余左边区域 -->
+    <div id="more"></div>
+  </div>
+   <!--导航end-->
+<!-- 留言 -->
+  <div class="liuyan">
+     <a href="<%linkurl("feedback")%>">
+         <img src="<%templateskin%>/images/签约.png" alt="">
+     </a>
+    <p>留言咨询</p>
+  </div>
+  <!-- 回到顶部 -->
+  <a href="#container">
+    <div class="toTop" style="bottom: 30px">
+      <img src="<%templateskin%>/images/返回顶部.png" alt="">
+      <p>返回顶部</p>
+    </div>
+  </a>

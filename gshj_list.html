@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{config.webtitle}</title>
+  <link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+  <link rel="stylesheet" href="<%templateskin%>/css/index.css">
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/base.js"></script>
+<script type="text/javascript" src="{config.webpath}css/style.css"></script>
+</head>
+<body>
+  <%template src="_header.html"%>
+<!-- 导航图片 -->
+  <div style="height:112px" class=" h_80"></div>
+ <%set DataTable articalDtzJzGz=get_article_list("photo",61,1, "status=0")%>
+<%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+  <img src="{drzJzGz[img_url]}" class="w-100 tonone">
+     <%/foreach%>
+
+  <!--  手机站导航图片 -->
+<%set DataTable marticalDtzJzGz=get_article_list("photo",70,1, "status=0")%>
+<%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+    <img src="{drzJzGz[img_url]}" class="w-100 sjz_banner">
+     <%/foreach%>
+  <!-- 页面导航 -->
+  <div class="about w-100 about_a">
+       <%set DataTable gshjdtwEw=get_category_child_list("gshj", 0)%>
+        <%foreach(DataRow drwEwTR in gshjdtwEw.Rows)%>
+    <a href="<%linkurl("gshj_list",{drwEwTR[id]})%>" class="about_nav_item">{drwEwTR[title]}</a>
+        <%/foreach%>
+      <a  class="about_nav_item"  href="<%linkurl("about","about")%>">BOELLA团队</a>  
+  </div>
+  <!-- BOELLA团队 -->
+  <div class="container-fluid bg-w">
+    <!-- 内容 -->
+    <div class="about_info_box">
+
+   <%set DataTable articalDtmYPSc=get_article_list("gshj", category_id, page, "status=0", out totalcount, out pagelist, "gshj_list", category_id, "__id__")%>
+   <%foreach(DataRow drcEGZr in articalDtmYPSc.Rows)%>        
+      <!-- 内容区域 -->
+      <div class="about_info_item_box">
+        <div class="about_info_img w-50"  style="padding: 0 36px 0 30px">
+          <img src="{drcEGZr[img_url]}" class="w-100">
+        </div>
+        <div class="about_info_info w-50" style="padding: 0 30px 0 36px">
+          <p class="about_info_title">{drcEGZr[title]}</p>
+          <p class="about_info_titlesec">{drcEGZr[zhaiyao]}</p>
+          <p class="flo4_info_hx"></p>
+          <p class="about_info_text">{drcEGZr[content]}</p>
+        </div>
+        <div style="clear: both"></div>
+      </div>
+     
+      <%/foreach%>
+
+    </div>
+  </div>
+<!-- 底部 -->
+  <!-- 分公司地址信息 -->
+    <div id="foot1"><%template src="_footer1.html"%></div>
+    <!-- 底部导航 -->
+    <div id="foot2"><%template src="_footer2.html"%></div>
+</body>
+
+<script>
+    $('#foot1').load('_footer1.html');
+    $('#foot2').load('_footer2.html');
+
+  $('.about_info_info:odd').css('float','left')
+  $('.about_info_info:even').css('float','right')
+  $('.about_info_img:odd').css('float','left')
+  $('.about_info_img:even').css('float','right')
+
+  
+</script>
+<script type="text/javascript">
+        var ma = location.href;
+         ma = ma.split("/");
+         oa = ma[ma.length-1];
+         oa2 = ma[ma.length-2];
+         oa3 ="/"+ oa2+"/"+oa
+         $(".about_a a").each(function(){
+          if($(this).attr("href")==oa3){
+           $(this).addClass("about_sel");
+          }
+         });
+</script>
+</html>

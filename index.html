@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浙江铂艾雅家居有限公司</title>
+<link rel="stylesheet" href="<%templateskin%>/css/bootstrap.css">
+<link rel="stylesheet" href="<%templateskin%>/css/index.css">
+
+<script src="<%templateskin%>/js/jquery.min.js"></script>
+<script src="<%templateskin%>/js/bootstrap.min.js"></script>
+<script src="<%templateskin%>/js/jquery-1.9.1.min.js"></script>
+<script src="<%templateskin%>/js/jquery.bxslider.js"></script>
+<script src="<%templateskin%>/js/index.js"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+
+<script type="text/javascript" src="{config.webpath}scripts/base.js"></script>
+<script type="text/javascript" src="{config.webpath}css/style.css" ></script>
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+  $(".item:first").addClass("active")
+
+     $('.slider7').bxSlider({ 
+
+      slideWidth: $(window).width(), 
+
+      auto: true,
+
+      infiniteLoop: true,
+
+      hideControlOnEnd: true,
+ 
+      speed: 2000,
+      });
+   });
+</script>
+
+</head>
+<body>
+<%template src="_header.html"%>
+
+      <!-- 轮播图 -->
+  <div style="height:112px" class=" h_80"></div>
+
+     <!-- 手机站banner -->
+  <div class="slider7 ">
+ <%set DataTable marticalDtzJzGz=get_article_list("photo", 69, 3, "status=0")%>
+    <%foreach(DataRow drzJzGz in marticalDtzJzGz.Rows)%>
+       <div class="slide"><img class="w-100" data-src="{drzJzGz[img_url]}" src=""></div>
+         <%/foreach%> 
+  </div> 
+
+<!-- 轮播 -->
+<div id="myCarousel" class="carousel slide tonone" data-interval="5500" data-ride="carousel">
+    <div class="carousel-inner">
+    <%set DataTable articalDtzJzGz=get_article_list("photo", 29, 3, "status=0")%>
+    <%foreach(DataRow drzJzGz in articalDtzJzGz.Rows)%>
+        <div class="item slide_img">
+            <img data-src="{drzJzGz[img_url]}"  src="" class="w-100 slide_img1 slide_img">
+        </div> 
+    <%/foreach%> 
+    </div>
+</div>
+
+
+  <!-- 去第一页 -->
+    <img src="<%templateskin%>/images/SCROLL.png" class="toFlo1 tonone">
+  <!-- 合作品牌 -->
+  <div class="container-fluid bg-w">
+    <div class="flo1">
+      <!-- 标题标签 -->
+      <div class="flo5_title" style="margin-top: 46px">
+        <p class="flo5_title_fri">合作品牌</p>
+        <p class="flo5_title_xx">/</p>
+        <p class="flo5_title_sec m-0">COOPERATIVE BRAND</p>
+      </div>
+      <!-- 品牌介绍 -->
+      <div class="flo1_box row mx-0">
+      <%set DataTable articalDtmAdhj=get_article_list("rczp", 0, 6, "status=0 and is_red=1")%>
+      <%foreach(DataRow drmAdhj in articalDtmAdhj.Rows)%>
+        <div class="flo1_info_box hzpp col-md-4 col-xs-6">
+          <a href="<%linkurl("rczp_show",{drmAdhj[id]})%>">
+            <img data-src="{drmAdhj[img_url]}"  src=""  class="flo1_info_img">
+            <div class="flo1_info_icon">
+              <img data-src="{drmAdhj[pinpailogo]}" src="" class="">
+            </div>
+            <div class="flo1_info_icon1">
+              <img data-src="{drmAdhj[spinpailogo]}" src="" class="">
+              <p class="flo1_info_title">{drmAdhj[title]}</p>
+              <p class="flo1_info_text">{drmAdhj[zhaiyao]}</p>
+              <p class="flo1_info_more">READ MORE</p>
+            </div>
+           </a>
+         </div>
+      <%/foreach%>       
+      </div> 
+    </div>
+    <!-- 更多 -->
+    <a href="<%linkurl("rczp_list",47)%>">
+      <div class="more" style="margin-top: 30px">READ MORE &gt;</div>
+    </a>
+  </div>
+  <!-- 服务流程 -->
+  <div class="container-fluid bg-h">
+    <div class="flo2">
+      <!-- 标题 -->
+      <div class="flo5_title">
+        <p class="flo5_title_fri">服务流程</p>
+        <p class="flo5_title_xx">/</p>
+        <p class="flo5_title_sec m-0">SERVICE FLOW</p>
+      </div>
+      <!-- 流程示意图 -->
+      <img src="<%templateskin%>/images/流程.png" class="flo2_img w-100 tonone">
+      <img src="<%templateskin%>/images/流程1.png" class="flo2_img flo2_img1 w-100" style="display: none">
+      <!-- 内容区域 -->
+      <div class="flo2_info row">
+        <div class="flo2_info_box col-6 row txy1">
+          <div class="col-md-6 col-xs-12 px-0">
+              <img data-src="<%templateskin%>/images/图层 28.png" src="" class="flo2_info_img">
+          </div>
+          <div class="flo2_title col-md-6 col-xs-12 px-0">
+            <p class="flo2_info_fri">专业设计</p>
+            <p class="flo2_info_sec">DESIGN SERVICES</p>
+          </div>
+        </div>
+        <div class="flo2_info_box  col-6 row txy1">
+          <div class="col-md-6 col-xs-12 px-0">
+              <img data-src="<%templateskin%>/images/2.jpg"  src="" class="flo2_info_img">
+          </div>
+          <div class="flo2_title  col-md-6 col-xs-12 px-0">
+            <p class="flo2_info_fri">产品运输</p>
+            <p class="flo2_info_sec">TRANSPORT SERVICES</p>
+          </div>
+        </div>
+        <div class="flo2_info_box col-6 row txy1">
+          <div class="col-md-6 col-xs-12 px-0">
+              <img data-src="<%templateskin%>/images/3.jpg" src="" class="flo2_info_img">
+          </div>
+          <div class="flo2_title  col-md-6 col-xs-12 px-0">
+            <p class="flo2_info_fri">上门安装</p>
+            <p class="flo2_info_sec">INSTALLATION SERVICES</p>
+          </div>
+        </div>
+        <div class="flo2_info_box  col-6 row txy1">
+          <div class="col-md-6 col-xs-12 px-0">
+              <img data-src="<%templateskin%>/images/4.jpg" src="" class="flo2_info_img">
+          </div>
+          <div class="flo2_title  col-md-6 col-xs-12 px-0">
+            <p class="flo2_info_fri">售后保障</p>
+            <p class="flo2_info_sec">AFTER-SALES SERVICES</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <!-- 设计团队 -->
+  <div class="container-fluid bg-w">
+    <div class="flo3">
+      <!-- 标题 -->
+      <div class="flo5_title">
+        <p class="flo5_title_fri">设计团队</p>
+        <p class="flo5_title_xx">/</p>
+        <p class="flo5_title_sec m-0">DESIGN TEAM</p>
+      </div>
+      <!-- 团队介绍 -->
+      <div class="row mx-0">
+     <%set DataTable articalcase=get_article_list("case",55,6, "status=0 and is_red=1")%>
+     <%foreach(DataRow drmAdhj in articalcase.Rows)%>
+
+        <div class="flo3_info_box col-md-4 col-xs-6 ">
+
+            <div>
+         <a href="<%linkurl("case_show",{drmAdhj[id]})%>">
+            <div class="flo3_info_zhezhao"><p>了解设计师</p></div>
+            <img data-src="{drmAdhj[img_url]}" src="" class="flo3_info_img">
+          </a>
+            <p class="flo3_info_fri">{drmAdhj[title]}</p>
+          <p class="flo3_info_sec">{drmAdhj[sub_title]}</p>
+            
+          </div>
+      </div>
+   
+<%/foreach%>     
+
+      
+
+
+
+      </div>
+    </div>
+    <!-- 更多 -->
+    <a href="<%linkurl("case_list",55)%>">
+      <div class="more" style="margin-top: 10px">READ MORE &gt;</div>
+    </a>
+  </div>
+  <!-- 品牌SHOW -->
+  <div class="container-fluid bg-h">
+    <!-- 1300px 以下 -->
+    <div class="flo4_sec">
+      <!-- 标题 -->
+      <div class="flo5_title">
+        <p class="flo5_title_fri">品牌SHOW</p>
+        <p class="flo5_title_xx">/</p>
+        <p class="flo5_title_sec m-0">BRAND SHOW</p>
+      </div>
+      <!-- 内容区域 -->
+      <div class="ppshow_box row mx-0">
+     <%set DataTable articalgoods_red=get_article_list("goods",0,5, "status=0 and is_red=1")%>
+     <%foreach(DataRow drmAdhj in articalgoods_red.Rows)%>
+        <!-- 单个内容区域 -->
+        <div class="ppshow_item_box col-md-4 col-xs-6 ">
+
+            <a href="<%linkurl("goods_show",{drmAdhj[id]})%>">
+          <div class="row mx-0">
+            <div class="col-12 w-100 px-0">
+                <img data-src="{drmAdhj[img_url]}"  src="" class="w-100 ppshow_item_img ">
+              </div>
+            <div class="ppshow_info w-100 col-12"> 
+              <p class="flo4_info_fri">{drmAdhj[title]}</p>  
+              <p class="flo4_info_hx"></p>
+              <p class="flo4_info_text mb-0">{drmAdhj[zhaiyao]}</p>
+              
+            </div>
+          </div>
+
+        </a>
+        </div>
+      <%/foreach%>  
+
+
+
+      </div>  
+      <!-- 更多 -->
+      <a href="<%linkurl("goods_list",0)%>">
+        <div class="more" style="margin-top: 30px">READ MORE &gt;</div>
+      </a>
+    </div>
+    <!-- 1300屏 以上 -->
+    <div class="flo4">
+      <!-- 标题 -->
+      <div class="flo4_title">
+        <p class="flo4_title_fri">品牌SHOW</p>
+        <p class="flo4_title_xx">/</p>
+        <p class="flo4_title_sec m-0">BRAND SHOW</p>
+        <img src="<%templateskin%>/images/前进2.png" class="flo4_title_next">
+        <img src="<%templateskin%>/images/前进1.png" class="flo4_title_prev">
+        <div class="flo4_title_item">
+          <span class="flo4_title_index" style="color: #fff"></span>
+          <span>-</span>
+          <span class="flo4_title_length"></span>
+        </div>
+      </div>
+      <!-- 水平滚动 -->
+      <div class="flo4_slide row mx-0">
+        <!-- 存放item区域 -->
+        <div class="flo4_slide_box">
+
+      <%set DataTable articalgoods_redo=get_article_list("goods",0,5, "status=0 and is_red=1")%>
+     <%foreach(DataRow drmAdhj in articalgoods_redo.Rows)%>
+          <!-- 单个区域 -->
+          <div class="flo4_item col-4 px-0">
+
+          
+            <a href="<%linkurl("goods_show",{drmAdhj[id]})%>">
+            <div class="col-12 px-0 ">
+              <img data-src="{drmAdhj[img_url]}" src="" class="flo4_img">
+            </div>
+            <div class="flo4_info col-12 px-0">
+              <p class="flo4_info_fri">{drmAdhj[title]}</p>
+              <p class="flo4_info_hx"></p>
+              <p class="flo4_info_text mb-0">{drmAdhj[zhaiyao]}</p>
+            </div>
+            <!-- read more -->
+            <div class="flo4_more"></div>
+            <div class="flo4_more1">READ MORE <img src="<%templateskin%>/images/READ MORE.png" alt=""></div>
+
+           </a>
+          </div>
+    <%/foreach%>  
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 合作伙伴 -->
+  <div class="container-fluid bg-w">
+    <!--  -->
+    <div class="flo5">
+      <!-- 标题 -->
+      <div class="flo5_title">
+        <p class="flo5_title_fri">合作伙伴</p>
+        <p class="flo5_title_xx">/</p>
+        <p class="flo5_title_sec m-0">COOPERATIVE PARTNER</p>
+      </div>
+      <!-- 图标 -->
+      <div class="row mx-0">
+     <%set DataTable articalteam=get_article_list("team",34,6, "status=0")%>
+     <%foreach(DataRow drmAdhj in articalteam.Rows)%>
+          <div class="flo5_icon_box icon_qs px-0 col-lg-2 col-md-3 col-xs-4">
+            <img data-src="{drmAdhj[img_url]}" src="" class="flo5_icon_img">
+          </div>
+     <%/foreach%>
+      </div>
+      <!-- 更多 -->
+      <a href="<%linkurl("team_list",0)%>">
+        <div class="more">READ MORE &gt;</div>
+      </a>
+    </div>
+  </div>
+<!-- 底部 -->
+  <!-- 分公司地址信息 -->
+  <div id="foot1"><%template src="_footer1.html"%></div>
+  <!-- 底部导航 -->
+  <div id="foot2"><%template src="_footer2.html"%></div>
+<script type="text/javascript">
+if($(window).width()<=800){
+    var ch=$(".txy").innerWidth()
+    var wh =Math.floor(ch)
+
+    $(".txy").width(wh-10)
+
+    var ch1=$(".txy1").innerWidth()
+    var wh1 =Math.floor(ch1)
+
+    $(".txy1").width(wh1-4)
+  }
+</script>
+</body>
+</html>
